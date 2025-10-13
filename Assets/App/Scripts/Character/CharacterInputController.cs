@@ -21,6 +21,11 @@ public class CharacterInputController : MonoBehaviour
         SetLook(inputValue.Get<Vector2>());
     }
 
+    public void OnInteract(InputValue inputValue)
+    {
+        SetInteract(inputValue.isPressed);
+    }
+
     private void SetMove(Vector2 moveDirect)
     {
         move = moveDirect;
@@ -29,5 +34,10 @@ public class CharacterInputController : MonoBehaviour
     private void SetLook(Vector2 lookDirect)
     {
         look = lookDirect;
+    }
+
+    private void SetInteract(bool isInteracting)
+    {
+        ScriptableObjectController.instance.UpdateInteractingAction.RunAction(isInteracting);
     }
 }

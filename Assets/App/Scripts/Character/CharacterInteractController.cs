@@ -18,12 +18,25 @@ public class CharacterInteractController : MonoBehaviour
 
     private bool hasInteractItem = false;
     private bool inHightlight = true;
+    private bool isInteracting = false;
 
     private void Awake()
     {
         sendRaycastPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
 
         UnHighlight();
+    }
+
+    private void OnEnable()
+    {
+        ScriptableObjectController.instance.UpdateHighlightTextAction.ResignAction(UpdateHightlightText);
+        ScriptableObjectController.instance.UpdateInteractingAction.ResignAction(SetIsInteracting);
+    }
+
+    private void OnDisable()
+    {
+        ScriptableObjectController.instance.UpdateHighlightTextAction.UnResignAction(UpdateHightlightText);
+        ScriptableObjectController.instance.UpdateInteractingAction.UnResignAction(SetIsInteracting);
     }
 
     private void Update()
@@ -39,10 +52,14 @@ public class CharacterInteractController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, raycastDistance))
         {
             currentInteractItem = hit.collider.GetComponent<IInteractItem>();
-            if (currentInteractItem != null)
+            if (currentInteractItem != null && currentInteractItem.canInteract)
             {
                 Hightlight();
 
+                if (isInteracting)
+                {
+                    currentInteractItem.Interact();
+                }
             }
             else
             {
@@ -73,11 +90,13 @@ public class CharacterInteractController : MonoBehaviour
 
     private void UnHighlight()
     {
-        if(!inHightlight)
+        if (!inHightlight)
         {
             return;
         }
         inHightlight = false;
+
+        isInteracting = false;
 
         hasInteractItem = false;
 
@@ -86,7 +105,17 @@ public class CharacterInteractController : MonoBehaviour
             currentInteractItem.UnInteract();
             currentInteractItem = null;
         }
-        
+
         highlightObject.SetActive(false);
+    }
+
+    private void UpdateHightlightText(string textString)
+    {
+        highlightText.text = textString;
+    }
+
+    private void SetIsInteracting(bool setValue)
+    {
+        isInteracting = setValue;
     }
 }
