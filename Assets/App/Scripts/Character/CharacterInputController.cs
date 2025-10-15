@@ -38,6 +38,6 @@ public class CharacterInputController : MonoBehaviour
 
     private void SetInteract(bool isInteracting)
     {
-        ScriptableObjectController.instance.UpdateInteractingAction.RunAction(isInteracting);
+        ScriptableObjectController.I.UpdateInteractingAction.RunAction(isInteracting);
     }
 }

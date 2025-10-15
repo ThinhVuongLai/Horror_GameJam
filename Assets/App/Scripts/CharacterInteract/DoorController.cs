@@ -6,11 +6,17 @@ public class DoorController : MonoBehaviour, IInteractItem
 {
     [SerializeField] private float openAngle = 90.0f;
 
+    [SerializeField] private float localYEulerAngle = 0f;
+    [SerializeField] private float yEulerAngle = 0f;
+
     private bool inRunOpen = false;
     public bool canInteract { get; set; }
 
     private void Awake()
     {
+        yEulerAngle = transform.eulerAngles.y;
+        localYEulerAngle = transform.localEulerAngles.y;
+
         canInteract = true;
     }
 
@@ -18,11 +24,11 @@ public class DoorController : MonoBehaviour, IInteractItem
     {
         if (canInteract)
         {
-            ScriptableObjectController.instance.UpdateHighlightTextAction.RunAction("Press [E] to Open Door");
+            ScriptableObjectController.I.UpdateHighlightTextAction.RunAction("Press [E] to Open Door");
         }
         else
         {
-            ScriptableObjectController.instance.UpdateHighlightTextAction.RunAction("");
+            ScriptableObjectController.I.UpdateHighlightTextAction.RunAction("");
         }
     }
 
@@ -48,13 +54,17 @@ public class DoorController : MonoBehaviour, IInteractItem
             return;
 
         OpenDoor();
+
+        yEulerAngle = transform.eulerAngles.y;
+        localYEulerAngle = transform.localEulerAngles.y;
     }
 
     private void OpenDoor()
     {
         transform.Rotate(new Vector3(0, openAngle * Time.deltaTime, 0), Space.Self);
 
-        if (transform.localEulerAngles.y >= openAngle)
+        if ((openAngle >= 0 && (transform.localEulerAngles.y >= openAngle))
+            || (openAngle < 0 && transform.localEulerAngles.y <= (360 + openAngle)))
         {
             inRunOpen = false;
         }

@@ -29,14 +29,14 @@ public class CharacterInteractController : MonoBehaviour
 
     private void OnEnable()
     {
-        ScriptableObjectController.instance.UpdateHighlightTextAction.ResignAction(UpdateHightlightText);
-        ScriptableObjectController.instance.UpdateInteractingAction.ResignAction(SetIsInteracting);
+        ScriptableObjectController.I.UpdateHighlightTextAction.ResignAction(UpdateHightlightText);
+        ScriptableObjectController.I.UpdateInteractingAction.ResignAction(SetIsInteracting);
     }
 
     private void OnDisable()
     {
-        ScriptableObjectController.instance.UpdateHighlightTextAction.UnResignAction(UpdateHightlightText);
-        ScriptableObjectController.instance.UpdateInteractingAction.UnResignAction(SetIsInteracting);
+        ScriptableObjectController.I.UpdateHighlightTextAction.UnResignAction(UpdateHightlightText);
+        ScriptableObjectController.I.UpdateInteractingAction.UnResignAction(SetIsInteracting);
     }
 
     private void Update()
