@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 856476801679349427}
   - component: {fileID: 238085187392605163}
   - component: {fileID: 2195962792502876691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface485 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2948,7 +2948,7 @@ GameObject:
   - component: {fileID: 2953932022912976426}
   - component: {fileID: 6513877762794279271}
   - component: {fileID: 6978991769675284416}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Basement_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12363,7 +12363,7 @@ GameObject:
   - component: {fileID: 1392523338345937123}
   - component: {fileID: 861807857141980136}
   - component: {fileID: 6064190565890936191}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13762,7 +13762,7 @@ GameObject:
   - component: {fileID: 8048874738274530201}
   - component: {fileID: 4147582826465661316}
   - component: {fileID: 2880795279939259956}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: polySurface485 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

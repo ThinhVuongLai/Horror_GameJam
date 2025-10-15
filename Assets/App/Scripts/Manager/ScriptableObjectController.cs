@@ -9,8 +9,10 @@ public class ScriptableObjectController : SingletonMono<ScriptableObjectControll
     [SerializeField] private UpdateTextAction updateDateTimeTextAction;
 
     [SerializeField] private UpdateBoolAction updateInteractingAction;
+    [SerializeField] private UpdateBoolAction setLockCharacterAction;
 
     public UpdateTextAction UpdateHighlightTextAction => updateHighlightTextAction;
     public UpdateTextAction UpdateDateTimeTextAction => updateDateTimeTextAction;
     public UpdateBoolAction UpdateInteractingAction => updateInteractingAction;
+    public UpdateBoolAction SetLockCharacterAction => setLockCharacterAction;
 }

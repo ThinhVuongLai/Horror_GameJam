@@ -8,7 +8,7 @@ public class HorrorCharacterController : MonoBehaviour
     [SerializeField] private Transform characterTransform = null;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private CharacterInputController inputController;
-    [SerializeField] private  CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
 
     [Header("Move Setting")]
     [SerializeField] private float moveSpeed = 5f;
@@ -33,8 +33,25 @@ public class HorrorCharacterController : MonoBehaviour
 
     private bool isGrounded;
 
+    private bool lockCharacter = false;
+
+    private void OnEnable()
+    {
+        ScriptableObjectController.I.SetLockCharacterAction.ResignAction(SetLockCharacter);
+    }
+
+    private void OnDisable()
+    {
+        ScriptableObjectController.I.SetLockCharacterAction.UnResignAction(SetLockCharacter);
+    }
+
     private void Update()
     {
+        if (lockCharacter)
+        {
+            return;
+        }
+
         HandleMove();
         HandleGravity();
         GroundedCheck();
@@ -42,6 +59,11 @@ public class HorrorCharacterController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (lockCharacter)
+        {
+            return;
+        }
+
         HandleLook();
     }
 
@@ -89,5 +111,10 @@ public class HorrorCharacterController : MonoBehaviour
         }
         characterVelocity.y += gravity * Time.deltaTime;
         characterController.Move(Vector3.up * characterVelocity.y * Time.deltaTime);
+    }
+
+    private void SetLockCharacter(bool isLock)
+    {
+        lockCharacter = isLock;
     }
 }

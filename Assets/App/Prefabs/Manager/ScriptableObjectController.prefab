@@ -47,3 +47,4 @@ MonoBehaviour:
   updateHighlightTextAction: {fileID: 11400000, guid: ba8b278324d494a4d9e4228593d8a406, type: 2}
   updateDateTimeTextAction: {fileID: 11400000, guid: 6eeda14a71cd6574ea19240e917b3c3e, type: 2}
   updateInteractingAction: {fileID: 11400000, guid: bdea38fa42598414d8d0bee69a5cb27f, type: 2}
+  setLockCharacterAction: {fileID: 11400000, guid: 0db0ff5f6445b6d4590ea21a9b08f45f, type: 2}

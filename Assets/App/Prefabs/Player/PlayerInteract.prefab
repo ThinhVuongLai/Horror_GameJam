@@ -201,6 +201,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightObject: {fileID: 702242180677096982}
   highlightText: {fileID: 964900201987215734}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 128
   raycastDistance: 3
 --- !u!1 &9050440126766150535
 GameObject:

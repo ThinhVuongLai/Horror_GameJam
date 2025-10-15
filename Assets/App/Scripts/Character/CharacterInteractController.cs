@@ -10,6 +10,7 @@ public class CharacterInteractController : MonoBehaviour
     [SerializeField] private Text highlightText = null;
 
     [Header("Ratcast Setting")]
+    [SerializeField] private LayerMask groundLayers;
     [SerializeField] private float raycastDistance = 3.0f;
 
     private IInteractItem currentInteractItem = null;
