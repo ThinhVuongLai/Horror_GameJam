@@ -85,6 +85,12 @@ MonoBehaviour:
   rotationSpeed: 0.1
   cameraPitchMin: -70
   cameraPitchMax: 50
+  groundedOffset: 0.85
+  groundedRadius: 0.3
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  gravity: -20
 --- !u!114 &4287031994568817836
 MonoBehaviour:
   m_ObjectHideFlags: 0

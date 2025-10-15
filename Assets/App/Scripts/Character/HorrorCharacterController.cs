@@ -10,22 +10,34 @@ public class HorrorCharacterController : MonoBehaviour
     [SerializeField] private CharacterInputController inputController;
     [SerializeField] private  CinemachineVirtualCamera cinemachineVirtualCamera;
 
-    [Header("Move Option")]
+    [Header("Move Setting")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float accelerationRate = 10f;
     [SerializeField] private float decelerationRate = 10f;
 
-    [Header("Look Option")]
+    [Header("Look Setting")]
     [SerializeField] private float rotationSpeed = 10;
     [SerializeField] private float cameraPitchMin = -70f;
     [SerializeField] private float cameraPitchMax = 70f;
 
+    [Header("Grounded Settings")]
+    public float groundedOffset = .85f;
+    public float groundedRadius = 0.3f;
+    public LayerMask groundLayers;
+
+    [Header("Simulate Physic Seting")]
+    public float gravity = -20f;
+
     private Vector3 characterVelocity = Vector3.zero;
     private float cameraPitch = 0;
+
+    private bool isGrounded;
 
     private void Update()
     {
         HandleMove();
+        HandleGravity();
+        GroundedCheck();
     }
 
     private void LateUpdate()
@@ -60,5 +72,22 @@ public class HorrorCharacterController : MonoBehaviour
 
         cinemachineVirtualCamera.transform.localEulerAngles = new Vector3(cameraPitch, 0, 0);
         characterTransform.Rotate(Vector3.up * inputLockDirect.x * rotationSpeed);
+    }
+
+    private void GroundedCheck()
+    {
+        // set sphere position, with offset
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - groundedOffset, transform.position.z);
+        isGrounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore);
+    }
+
+    private void HandleGravity()
+    {
+        if (isGrounded && characterVelocity.y < 0)
+        {
+            characterVelocity.y = -2f;
+        }
+        characterVelocity.y += gravity * Time.deltaTime;
+        characterController.Move(Vector3.up * characterVelocity.y * Time.deltaTime);
     }
 }
