@@ -35,14 +35,33 @@ public class HorrorCharacterController : MonoBehaviour
 
     private bool lockCharacter = false;
 
+    private List<int> inventeryFoodIndexs = new List<int>();
+
     private void OnEnable()
     {
         ScriptableObjectController.I.SetLockCharacterAction.ResignAction(SetLockCharacter);
+        ScriptableObjectController.I.UpdateInventeryFoodIndexAction.ResignAction(UpdateInventeryFoodIndexs);
+
+        ScriptableObjectController.I.HasCollectFoodAction.ResignAction(IsHaveFood);
+
+        ScriptableObjectController.I.GetInventeryFoodIndexAction.ResignAction(GetInventeryFoodIndexs);
+
+        ScriptableObjectController.I.CookAction.ResignAction(OnCookAction);
     }
 
     private void OnDisable()
     {
-        ScriptableObjectController.I.SetLockCharacterAction.UnResignAction(SetLockCharacter);
+        if (ScriptableObjectController.I != null)
+        {
+            ScriptableObjectController.I.SetLockCharacterAction.UnResignAction(SetLockCharacter);
+            ScriptableObjectController.I.UpdateInventeryFoodIndexAction.UnResignAction(UpdateInventeryFoodIndexs);
+
+            ScriptableObjectController.I.HasCollectFoodAction.UnResignAction(IsHaveFood);
+
+            ScriptableObjectController.I.GetInventeryFoodIndexAction.UnResignAction(GetInventeryFoodIndexs);
+
+            ScriptableObjectController.I.CookAction.UnResignAction(OnCookAction);
+        }
     }
 
     private void Update()
@@ -116,5 +135,46 @@ public class HorrorCharacterController : MonoBehaviour
     private void SetLockCharacter(bool isLock)
     {
         lockCharacter = isLock;
+    }
+
+    private void UpdateInventeryFoodIndexs(int foodIndex)
+    {
+        if (!inventeryFoodIndexs.Contains(foodIndex))
+        {
+            inventeryFoodIndexs.Add(foodIndex);
+            string foodName = GetInventeryFoodNames();
+            ScriptableObjectController.I.UpdateInventeryTextAction.RunAction(foodName);
+        }
+    }
+
+    private string GetInventeryFoodNames()
+    {
+        List<string> foodNames = new List<string>();
+        foreach (int foodIndex in inventeryFoodIndexs)
+        {
+            string foodName = MergeFoodController.I.GetFoodName(foodIndex);
+            if (!string.IsNullOrEmpty(foodName))
+            {
+                foodNames.Add(foodName);
+            }
+        }
+        string listNameString = string.Join("\n ", foodNames);
+        return string.Format("You have: \n{0}", listNameString);
+    }
+
+    private bool IsHaveFood(int foodIndex)
+    {
+        return inventeryFoodIndexs.Contains(foodIndex);
+    }
+
+    private List<int> GetInventeryFoodIndexs()
+    {
+        return inventeryFoodIndexs;
+    }
+
+    private void OnCookAction()
+    {
+        inventeryFoodIndexs.Clear();
+        ScriptableObjectController.I.UpdateInventeryTextAction.RunAction("You have:");
     }
 }

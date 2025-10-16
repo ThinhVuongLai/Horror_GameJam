@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MergeFoodController : SingletonMono<MergeFoodController>
 {
+    [SerializeField] private List<FoodInfor> foodInfors = new List<FoodInfor>();
+    [SerializeField] private List<DishInfor> dishInfors = new List<DishInfor>();
     [SerializeField] private List<MergeFoodInfor> mergeFoodInfors = new List<MergeFoodInfor>();
 
-    public bool IsMergeTrue(params int[] arg)
+    public bool CanCook(List<int> arg)
     {
-        int inputlengt = arg.Length;
+        int inputlengt = arg.Count;
 
         MergeFoodInfor currentMergeFoodInfor = null;
         int currentFoodInforLength = 0;
@@ -48,10 +50,52 @@ public class MergeFoodController : SingletonMono<MergeFoodController>
 
         return false;
     }
+
+    public string GetFoodName(int foodIndex)
+    {
+        FoodInfor currentFoodInfor = null;
+        for (int i = 0, length = foodInfors.Count; i < length; i++)
+        {
+            currentFoodInfor = foodInfors[i];
+            if (currentFoodInfor.foodIndex == foodIndex)
+            {
+                return currentFoodInfor.foodName;
+            }
+        }
+        return string.Empty;
+    }
+
+    public string GetDishName(int dishIndex)
+    {
+        DishInfor currentDishInfor = null;
+        for (int i = 0, length = dishInfors.Count; i < length; i++)
+        {
+            currentDishInfor = dishInfors[i];
+            if (currentDishInfor.dishIndex == dishIndex)
+            {
+                return currentDishInfor.dishName;
+            }
+        }
+        return string.Empty;
+    }
 }
 
 [System.Serializable]
 public class MergeFoodInfor
 {
     public List<int> foodIndexs = new List<int>();
+}
+
+[System.Serializable]
+public class FoodInfor
+{
+    public int foodIndex = 0;
+    public string foodName = "Food";
+}
+
+[System.Serializable]
+public class DishInfor
+{
+    public int dishIndex = 0;
+    public string dishName = "Dish";
 }

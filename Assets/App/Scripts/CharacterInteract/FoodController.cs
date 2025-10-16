@@ -15,21 +15,36 @@ public class FoodController : MonoBehaviour, IInteractItem
 
     public void Highlight()
     {
-        
+        if (canInteract)
+        {
+            string foodName = MergeFoodController.I.GetFoodName(foodIndex);
+            if (string.IsNullOrEmpty(foodName))
+            {
+                ScriptableObjectController.I.UpdateHighlightTextAction.RunAction($"Can't collect, Because not found FoodInfor");
+            }
+            else
+            {
+                ScriptableObjectController.I.UpdateHighlightTextAction.RunAction($"Press [E] to Collect {foodName}");
+            }
+        }
+        else
+        {
+            ScriptableObjectController.I.UpdateHighlightTextAction.RunAction("");
+        }
     }
 
     public void HoldInteract()
     {
-        
+
     }
 
     public void Interact()
     {
-        
+        ScriptableObjectController.I.UpdateInventeryFoodIndexAction.RunAction(foodIndex);
     }
 
     public void UnInteract()
     {
-        
+
     }
 }

@@ -149,6 +149,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MergeFoodController
       objectReference: {fileID: 0}
+    - target: {fileID: 8004707877236883428, guid: ef73756330508bc47925b79d46e0a86c, type: 3}
+      propertyPath: foodInfors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004707877236883428, guid: ef73756330508bc47925b79d46e0a86c, type: 3}
+      propertyPath: foodInfors.Array.data[0].foodName
+      value: Potato
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004707877236883428, guid: ef73756330508bc47925b79d46e0a86c, type: 3}
+      propertyPath: foodInfors.Array.data[1].foodName
+      value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8004707877236883428, guid: ef73756330508bc47925b79d46e0a86c, type: 3}
+      propertyPath: foodInfors.Array.data[1].foodIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -211,6 +227,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4809031795617230014, guid: 4e100b52270daf24788fd293eba71c23, type: 3}
+      propertyPath: cookAction
+      value: 
+      objectReference: {fileID: 11400000, guid: 2db59fb4c216f764abf7d29374c06fa8, type: 2}
+    - target: {fileID: 4809031795617230014, guid: 4e100b52270daf24788fd293eba71c23, type: 3}
+      propertyPath: hasCollectFoodAction
+      value: 
+      objectReference: {fileID: 11400000, guid: 16ad815bf15a7fb489ef782c66dc32cd, type: 2}
+    - target: {fileID: 4809031795617230014, guid: 4e100b52270daf24788fd293eba71c23, type: 3}
+      propertyPath: updateInventeryTextAction
+      value: 
+      objectReference: {fileID: 11400000, guid: 3fc1d05ce6e71a1419b8bc536dd3f969, type: 2}
+    - target: {fileID: 4809031795617230014, guid: 4e100b52270daf24788fd293eba71c23, type: 3}
+      propertyPath: getInventeryFoodIndexAction
+      value: 
+      objectReference: {fileID: 11400000, guid: be93b8116fb7a354ab605526a795f50b, type: 2}
+    - target: {fileID: 4809031795617230014, guid: 4e100b52270daf24788fd293eba71c23, type: 3}
+      propertyPath: updateInventeryFoodIndexAction
+      value: 
+      objectReference: {fileID: 11400000, guid: b21e91fb2b4a282429957ae17c5a7284, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
