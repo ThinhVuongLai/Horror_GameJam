@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : SingletonMono<TimeManager>
 {
     [SerializeField] private float realSecondToDay = 900f; // 60 real seconds to 1 game day
 
     private bool isRunTime = true;
+
+    public bool IsRunTime
+    {
+        get { return isRunTime; }
+
+        set { isRunTime = value; }
+    }
 
     private float currentSecound = 0f;
     private int currentDay = 1;
@@ -21,7 +28,15 @@ public class TimeManager : MonoBehaviour
         currentSecound += Time.deltaTime;
         if (currentSecound >= realSecondToDay)
         {
-            NextDay();
+            if (currentDay >= 3)
+            {
+                GameManager.I.SetPauseGame(true);
+                ScriptableObjectController.I.ShowFinishAction.RunAction();
+            }
+            else
+            {
+                NextDay();
+            }
         }
         else
         {
