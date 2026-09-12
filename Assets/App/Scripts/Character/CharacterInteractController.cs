@@ -36,8 +36,11 @@ public class CharacterInteractController : MonoBehaviour
 
     private void OnDisable()
     {
-        ScriptableObjectController.I.UpdateHighlightTextAction.UnResignAction(UpdateHightlightText);
-        ScriptableObjectController.I.UpdateInteractingAction.UnResignAction(SetIsInteracting);
+        if (ScriptableObjectController.I != null)
+        {
+            ScriptableObjectController.I.UpdateHighlightTextAction.UnResignAction(UpdateHightlightText);
+            ScriptableObjectController.I.UpdateInteractingAction.UnResignAction(SetIsInteracting);
+        }
     }
 
     private void Update()

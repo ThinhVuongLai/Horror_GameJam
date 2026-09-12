@@ -37,6 +37,12 @@ public class HorrorCharacterController : MonoBehaviour
 
     private List<int> inventeryFoodIndexs = new List<int>();
 
+    private bool hasDish = false;
+    private bool hasMilk = false;
+
+    public bool HasDish => hasDish;
+    public bool HasMilk => hasMilk;
+
     private void OnEnable()
     {
         ScriptableObjectController.I.SetLockCharacterAction.ResignAction(SetLockCharacter);
@@ -45,6 +51,11 @@ public class HorrorCharacterController : MonoBehaviour
         ScriptableObjectController.I.HasCollectFoodAction.ResignAction(IsHaveFood);
 
         ScriptableObjectController.I.GetInventeryFoodIndexAction.ResignAction(GetInventeryFoodIndexs);
+
+        ScriptableObjectController.I.UpdateHasDishAction.ResignAction(SetHaveDish);
+
+        ScriptableObjectController.I.HaveDishAction.ResignFunc(HaveDish);
+        ScriptableObjectController.I.HaveMilkAction.ResignFunc(HaveMilk);
 
         ScriptableObjectController.I.CookAction.ResignAction(OnCookAction);
     }
@@ -59,6 +70,11 @@ public class HorrorCharacterController : MonoBehaviour
             ScriptableObjectController.I.HasCollectFoodAction.UnResignAction(IsHaveFood);
 
             ScriptableObjectController.I.GetInventeryFoodIndexAction.UnResignAction(GetInventeryFoodIndexs);
+
+            ScriptableObjectController.I.UpdateHasDishAction.UnResignAction(SetHaveDish);
+
+            ScriptableObjectController.I.HaveDishAction.UnResignFunc(HaveDish);
+            ScriptableObjectController.I.HaveMilkAction.UnResignFunc(HaveMilk);
 
             ScriptableObjectController.I.CookAction.UnResignAction(OnCookAction);
         }
@@ -176,5 +192,25 @@ public class HorrorCharacterController : MonoBehaviour
     {
         inventeryFoodIndexs.Clear();
         ScriptableObjectController.I.UpdateInventeryTextAction.RunAction("You have:");
+    }
+
+    private void SetHaveDish(bool hasDish)
+    {
+        this.hasDish = hasDish;
+    }
+
+    private bool HaveDish()
+    {
+        return this.hasDish;
+    }
+
+    private void SetHaveMilk(bool hasMilk)
+    {
+        this.hasMilk = hasMilk;
+    }
+
+    private bool HaveMilk()
+    {
+        return this.hasMilk;
     }
 }
