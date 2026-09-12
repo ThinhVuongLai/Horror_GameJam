@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb30a761d199e7749b86acfe486b6dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realSecondToDay: 900
+  realSecondToDay: 180

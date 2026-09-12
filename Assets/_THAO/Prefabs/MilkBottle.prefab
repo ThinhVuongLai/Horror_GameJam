@@ -56,8 +56,57 @@ PrefabInstance:
       propertyPath: m_Name
       value: MilkBottle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4d1a7c6a9e876f4b8653c1685903f7e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d4d1a7c6a9e876f4b8653c1685903f7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2582479279115644844}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d4d1a7c6a9e876f4b8653c1685903f7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3302040233315485105}
   m_SourcePrefab: {fileID: 100100000, guid: d4d1a7c6a9e876f4b8653c1685903f7e, type: 3}
+--- !u!1 &6149078222195551142 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d4d1a7c6a9e876f4b8653c1685903f7e, type: 3}
+  m_PrefabInstance: {fileID: 6454929034068580087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2582479279115644844
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149078222195551142}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2802735, y: 0.7347771, z: 0.28027344}
+  m_Center: {x: -0.000000029802322, y: 0.37273955, z: 0}
+--- !u!114 &3302040233315485105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149078222195551142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f600497926282643ab4afce1bd833a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  milkObject: {fileID: 6149078222195551142}

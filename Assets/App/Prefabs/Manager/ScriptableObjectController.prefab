@@ -48,3 +48,14 @@ MonoBehaviour:
   updateDateTimeTextAction: {fileID: 11400000, guid: 6eeda14a71cd6574ea19240e917b3c3e, type: 2}
   updateInteractingAction: {fileID: 11400000, guid: bdea38fa42598414d8d0bee69a5cb27f, type: 2}
   setLockCharacterAction: {fileID: 11400000, guid: 0db0ff5f6445b6d4590ea21a9b08f45f, type: 2}
+  updateHasDishAction: {fileID: 11400000, guid: 88f338eb216f8654ba96d7bf8c70cb6e, type: 2}
+  updateHasMilkAction: {fileID: 11400000, guid: 9dbfb3c6571edac418672997e8194fd3, type: 2}
+  updateInventeryFoodIndexAction: {fileID: 11400000, guid: b21e91fb2b4a282429957ae17c5a7284, type: 2}
+  updateInventeryTextAction: {fileID: 11400000, guid: 3fc1d05ce6e71a1419b8bc536dd3f969, type: 2}
+  cookAction: {fileID: 11400000, guid: 2db59fb4c216f764abf7d29374c06fa8, type: 2}
+  showLoseAction: {fileID: 11400000, guid: 4ea2e765a08a4504c9acd153530bcb7c, type: 2}
+  showFinishAction: {fileID: 11400000, guid: 7e7e5228ed34ef54eb2dce19ea64b955, type: 2}
+  hasCollectFoodAction: {fileID: 11400000, guid: 16ad815bf15a7fb489ef782c66dc32cd, type: 2}
+  haveDishAction: {fileID: 11400000, guid: 699db2539081d8544952976ae7cc0ea1, type: 2}
+  haveMilkAction: {fileID: 11400000, guid: 3c9b711ac25597f468c0cd5f85c9b368, type: 2}
+  getInventeryFoodIndexAction: {fileID: 11400000, guid: be93b8116fb7a354ab605526a795f50b, type: 2}
